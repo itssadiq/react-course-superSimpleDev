@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <div class="js-container"></div>
+
+    <script src="https://unpkg.com/supersimpledev/react.js"></script>
+    <script src="https://unpkg.com/supersimpledev/react-dom.js"></script>
+
+    <script src="https://unpkg.com/supersimpledev/babel.js"></script>
+    <script type="text/babel">
+      function Form({ inputText, setInputText }) {
+        function updateText(event) {
+          const textValue = event.target.value;
+          setInputText(textValue);
+        }
+
+        function reset() {
+          setInputText("");
+        }
+
+        function example() {
+          setInputText("Sadiq");
+        }
+
+        return (
+          <>
+            <input
+              type="text"
+              placeholder="Type a name here"
+              onChange={updateText}
+              value={inputText}
+            />
+            <button onClick={reset}>Reset</button>
+            <button onClick={example}>Example</button>
+          </>
+        );
+      }
+
+      function Paragraph({ inputText }) {
+        return <p>Hello! {inputText}</p>;
+      }
+
+      function App() {
+        const [inputText, setInputText] = React.useState("");
+        return (
+          <>
+            <Form inputText={inputText} setInputText={setInputText} />
+            <Paragraph inputText={inputText} />
+          </>
+        );
+      }
+
+      const container = document.querySelector(".js-container");
+      ReactDOM.createRoot(container).render(<App />);
+    </script>
+  </body>
+</html>
