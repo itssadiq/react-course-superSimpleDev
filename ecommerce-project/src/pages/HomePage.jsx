@@ -1,10 +1,13 @@
 import { Header } from "../components/Header";
+import { Helmet } from "react-helmet";
 import "./HomePage.css";
 
 export function HomePage() {
   return (
     <>
       <title>E-Commerce Project</title>
+      <link rel="icon" type="image/svg+xml" href="home-favicon.png" />
+
       <Header />
       <div className="home-page">
         <div className="products-grid">
